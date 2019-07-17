@@ -2,9 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Model;
+use BaseModel;
 
-class Event extends Model
+class Event extends BaseModel
 {
     //
 }
