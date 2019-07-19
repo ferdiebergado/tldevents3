@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProgramsTable extends Migration
+class CreateDivisionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateProgramsTable extends Migration
      */
     public function up()
     {
-        Schema::create('programs', function (Blueprint $table) {
+        Schema::create('divisions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('title')->unsigned();
-            $table->foreign('keystageId')->references('id')->on('keystages');
-            $table->foreign('mfoId')->references('id')->on('mfos');
+            $table->string('name');
+            $table->unsignedBigInteger('region_id');
+            $table->foreign('region_id')->references('id')->on('regions');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateProgramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programs');
+        Schema::dropIfExists('divisions');
     }
 }
