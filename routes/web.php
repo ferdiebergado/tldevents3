@@ -19,4 +19,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
-Route::resource('events', 'EventController');
+Route::group(['prefix' => 'manage', 'middleware' => 'admin'], function() {
+    Route::resource('programs', 'ProgramController');
+    Route::resource('events', 'EventController');
+});
